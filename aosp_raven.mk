@@ -14,11 +14,27 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/google/gs101/aosp_common.mk)
-$(call inherit-product, device/google/raviole/device-raven.mk)
+# Inherit some common PixelExperience stuff.
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_SUPPORTS_QUICK_TAP := true
+
+# Inherit device configuration
+$(call inherit-product, device/google/raviole/aosp_ravensburger.mk)
+$(call inherit-product, device/google/gs101/custom_common.mk)
+
+include device/google/raviole/raven/device-custom.mk
+
+## Device identifier. This must come after all inclusions
 PRODUCT_NAME := aosp_raven
-PRODUCT_DEVICE := raven
-PRODUCT_MODEL := AOSP on Raven
-PRODUCT_BRAND := Android
-PRODUCT_MANUFACTURER := Google
+PRODUCT_MODEL := Pixel 6 Pro
+PRODUCT_BRAND := google
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_PRODUCT=raven \
+    PRIVATE_BUILD_DESC="raven-user 13 TQ1A.230205.002 9471150 release-keys"
+
+BUILD_FINGERPRINT := google/raven/raven:13/TQ1A.230205.002/9471150:user/release-keys
+
+$(call inherit-product, vendor/google/raven/raven-vendor.mk)
