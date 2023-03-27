@@ -11,6 +11,11 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-aosp
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
 
+# Permissions
+# NOTE: Used to deal with permission issues caused by Gapps updates
+PRODUCT_COPY_FILES += \
+    device/google/raviole/permissions/pixel_permissions_product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixel_permissions_product.xml
+
 # PowerShare
 include hardware/google/pixel/powershare/device.mk
 
