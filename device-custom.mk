@@ -16,6 +16,10 @@ include hardware/google/pixel/powershare/device.mk
 
 # Build necessary packages for vendor
 
+# Now Playing
+PRODUCT_PACKAGES += \
+    NowPlayingOverlay
+
 # Audio
 PRODUCT_PACKAGES += \
     libaudioroutev2.vendor \
